@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<!--Displaying error message if there is error signing in-->
+    <div th:if="${param.error}">
+        <p th:text="${session.error}" th:unless="${session == null}">[...]</p>
+    </div>
+
+<!--Display message when the user session has closed or logged out-->
+    <div th:if="${param.logout}">
+        You have been logged out!
+    </div>
+
+<!--Login Form-->
+    <form th:action="@{/login}" method="post">
+        <label for="uname">Username: </label>
+        <input type="text" id="uname" name="username" placeholder="User Name" />
+        <label for="pword">Password: </label>
+        <input type="password" id="pword" name="password" placeholder="Password" />
+
+        <input type="submit" value="Sign In" />
+    </form>
+</body>
+</html>
